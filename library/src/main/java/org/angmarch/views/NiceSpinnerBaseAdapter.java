@@ -1,6 +1,7 @@
 package org.angmarch.views;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -36,6 +37,8 @@ public abstract class NiceSpinnerBaseAdapter<T> extends BaseAdapter {
 
     int selectedIndex;
 
+    Typeface font;
+
     NiceSpinnerBaseAdapter(
             Context context,
             int textColor,
@@ -47,6 +50,7 @@ public abstract class NiceSpinnerBaseAdapter<T> extends BaseAdapter {
         this.backgroundSelector = backgroundSelector;
         this.textColor = textColor;
         this.horizontalAlignment = horizontalAlignment;
+        font = Typeface.createFromAsset(context.getAssets(), "iransans.ttf");
     }
 
     @Override
@@ -70,6 +74,8 @@ public abstract class NiceSpinnerBaseAdapter<T> extends BaseAdapter {
         textView.setTextColor(textColor);
 
         setTextHorizontalAlignment(textView);
+
+        textView.setTypeface(font);
 
         return convertView;
     }
@@ -115,5 +121,19 @@ public abstract class NiceSpinnerBaseAdapter<T> extends BaseAdapter {
         ViewHolder(TextView textView) {
             this.textView = textView;
         }
+    }
+
+    @Override
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+        view.setTypeface(font);
+
+
+
+
+        TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
+        txtTitle.setTypeface(font);
+
+        return view;
     }
 }
