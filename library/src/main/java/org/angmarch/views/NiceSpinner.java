@@ -24,13 +24,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
-import android.widget.PopupWindow;
-
-
 import android.widget.ListPopupWindow;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -404,9 +401,9 @@ public class NiceSpinner extends AppCompatTextView {
         popupWindow.show();
         final ListView listView = popupWindow.getListView();
         if(listView != null) {
-            listView.setVerticalScrollBarEnabled(false);
+            listView.setVerticalScrollBarEnabled(true);
             listView.setHorizontalScrollBarEnabled(false);
-            listView.setVerticalFadingEdgeEnabled(false);
+            listView.setVerticalFadingEdgeEnabled(true);
             listView.setHorizontalFadingEdgeEnabled(false);
         }
     }
